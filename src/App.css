@@ -7,10 +7,15 @@
 
 .title {
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   font-family: "Brush Script MT", cursive;
   font-weight: bold;
   font-size: 70px;
+}
+
+.text {
+  font-family: "Brush Script MT", cursive;
+  font-size: 30px;
 }
 
 .footer {

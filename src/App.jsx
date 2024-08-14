@@ -14,7 +14,7 @@ import { Layout } from "./components/Layout/Layout";
 
 function App() {
   const [currentColor, setCurrentColor] = useState(() => {
-    return window.localStorage.getItem("backgroundColor") || "#90EE90";
+    return window.localStorage.getItem("backgroundColor") || "LavenderBlush";
   });
 
   useEffect(() => {
@@ -43,7 +43,8 @@ function App() {
         currentColor={currentColor}
         onChangeColor={handleChangeColor}
       />
-      <h1 className="title">A country I need to visit</h1>
+      <h1 className="title">Wish List</h1>
+      <p className="text">Task & Travel & Goals & Getaways</p>
       <Form />
       <StatusFilter />
       <TaskCounter />
