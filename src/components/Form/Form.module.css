@@ -1,0 +1,30 @@
+.form {
+  display: flex;
+  gap: 20px;
+}
+.field {
+}
+.btn {
+  background-image: linear-gradient(to right, #11622fcb 51%, #5562dcd8 100%);
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  transition: 0.5s;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+  border: none;
+  margin: 0 auto;
+  font-family: "Courier New", monospace;
+  font-weight: bold;
+  width: 100px;
+  height: 40px;
+}
+
+.btn:hover,
+.btn:focus {
+  background-position: right center;
+  color: rgba(0, 0, 0, 0.624);
+  text-decoration: none;
+}

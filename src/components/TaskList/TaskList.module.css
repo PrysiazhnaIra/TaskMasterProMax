@@ -1,0 +1,16 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.item {
+  padding: 15px;
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+  border-radius: 20px;
+  transition: box-shadow 0.3s ease;
+}
+
+.item:hover {
+  box-shadow: rgba(0, 0, 0, 0.76) 0px 22px 70px 4px;
+}

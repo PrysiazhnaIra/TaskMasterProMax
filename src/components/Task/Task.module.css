@@ -1,0 +1,47 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.checkbox {
+  margin-right: 10px;
+  width: 30px;
+  height: 30px;
+  margin-bottom: 0;
+}
+
+.text {
+  flex-grow: 1;
+  margin: 0 10px;
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: rgba(0, 0, 0, 0.65);
+  display: block;
+  font-weight: bold;
+}
+
+.btn {
+  background-image: linear-gradient(to right, #d64545cb 51%, #b993d6d8 100%);
+  margin-left: 10px;
+  text-align: center;
+  transition: 0.5s;
+  color: white;
+  /* box-shadow: 0 0 20px #eee; */
+  border-radius: 10px;
+  display: block;
+  border: none;
+  margin: 0 auto;
+  font-family: "Courier New", monospace;
+  font-weight: bold;
+  width: 100px;
+  height: 30px;
+}
+
+.btn:hover,
+.btn:focus {
+  background-position: right center;
+  color: rgba(0, 0, 0, 0.65);
+  text-decoration: none;
+}
