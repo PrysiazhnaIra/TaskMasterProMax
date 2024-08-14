@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { tasksReducer } from "./tasksSlice";
 import { filtersReducer } from "./filtersSlice";
+import { authReducer } from "./auth/slice";
 
 // // Middleware для збереження в Local Storage
 // const saveToLocalStorage = (store) => (next) => (action) => {
@@ -27,6 +28,7 @@ export const store = configureStore({
   reducer: {
     tasks: tasksReducer,
     filters: filtersReducer,
+    auth: authReducer,
   },
 
   // Для ініціалізації стану з Local Storage

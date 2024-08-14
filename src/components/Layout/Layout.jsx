@@ -1,5 +1,12 @@
-import css from "./Layout.module.css";
+import { Outlet } from "react-router-dom";
+import Header from "../Header/Header";
+// import css from "./Layout.module.css";
 
-export const Layout = ({ children }) => {
-  return <main className={css.container}>{children}</main>;
+export const Layout = () => {
+  return (
+    <div>
+      <Header />
+      <Outlet />
+    </div>
+  );
 };

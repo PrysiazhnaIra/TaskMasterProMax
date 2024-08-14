@@ -11,6 +11,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchTasks } from "./redux/operations";
 import { selectError, selectIsLoading } from "./redux/selectors";
 import { Layout } from "./components/Layout/Layout";
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home/Home";
+import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
+import Tasks from "./pages/Tasks/Tasks";
+import NotFound from "./pages/NotFound/NotFound";
 
 function App() {
   const [currentColor, setCurrentColor] = useState(() => {
@@ -38,7 +44,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <Layout>
+    <>
       <Background
         currentColor={currentColor}
         onChangeColor={handleChangeColor}
@@ -51,11 +57,19 @@ function App() {
       <Filter />
       {isLoading && !error && <p>Request in progress...</p>}
       <TaskList />
+
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="tasks" elements={<Tasks />} />
+        </Route>
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+
       <p className="footer">Vite + React + Redux project - Ira Prysiazhna</p>
-      {/* {isLoading && <p>Loading tasks...</p>}
-      {error && <p>{error}</p>}
-      <p>{items.length > 0 && JSON.stringify(items, null, 2)}</p> */}
-    </Layout>
+    </>
   );
 }
 
