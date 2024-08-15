@@ -17,6 +17,7 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Tasks from "./pages/Tasks/Tasks";
 import NotFound from "./pages/NotFound/NotFound";
+import Header from "./components/Header/Header";
 
 function App() {
   const [currentColor, setCurrentColor] = useState(() => {
@@ -49,26 +50,26 @@ function App() {
         currentColor={currentColor}
         onChangeColor={handleChangeColor}
       />
-      <h1 className="title">Wish List</h1>
-      <p className="text">Task & Travel & Goals & Getaways</p>
-      <Form />
-      <StatusFilter />
-      <TaskCounter />
-      <Filter />
-      {isLoading && !error && <p>Request in progress...</p>}
-      <TaskList />
-
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="tasks" elements={<Tasks />} />
+          <Route path="tasks" element={<Tasks />} />
         </Route>
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
 
-      <p className="footer">Vite + React + Redux project - Ira Prysiazhna</p>
+      {/* <h1 className="title">Wish List</h1>
+      <p className="text">Task & Travel & Goals & Getaways</p>
+      <Form />
+      <StatusFilter />
+      <TaskCounter />
+      <Filter />
+      {isLoading && !error && <p>Request in progress...</p>}
+      <TaskList /> */}
+
+      {/* <p className="footer">Vite + React + Redux project - Ira Prysiazhna</p> */}
     </>
   );
 }

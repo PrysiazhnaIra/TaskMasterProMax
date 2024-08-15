@@ -1,5 +1,6 @@
 import { Formik, Form, Field } from "formik";
 import { Link } from "react-router-dom";
+import css from "./Login.module.css";
 
 export default function Login() {
   const initialValues = {
@@ -15,13 +16,15 @@ export default function Login() {
     <div>
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         <Form>
-          <Field name="Email" placeholder="Enter your email" />
+          <Field name="email" placeholder="Enter your email" />
           <Field
             name="password"
             type="password"
             placeholder="Enter your password"
           />
-          <button type="submit">Login</button>
+          <button type="submit" className={css.btn}>
+            Login
+          </button>
           <p>
             You don't have an account? <Link to="/register">Sign up!</Link>
           </p>
