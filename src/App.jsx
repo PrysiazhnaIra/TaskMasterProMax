@@ -33,7 +33,7 @@ function App() {
   };
 
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectIsLoading);
+
   const error = useSelector(selectError);
 
   // // Отримуємо частини стану

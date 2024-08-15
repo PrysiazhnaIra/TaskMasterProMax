@@ -1,11 +1,14 @@
 import { Formik, Form, Field } from "formik";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import css from "./Login.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginThunk } from "../../redux/auth/operation";
-import * as Yup from "yup";
+// import * as Yup from "yup";
+import { selectIsLoggedIn } from "../../redux/auth/selectors";
+import { ErrorMessage } from "formik";
 
 export default function Login() {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   const initialValues = {
     email: "",
     password: "",
@@ -13,31 +16,42 @@ export default function Login() {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, options) => {
+    const credentials = {
+      email: values.email,
+      password: values.password,
+    };
     dispatch(loginThunk(values));
     console.log(values);
     options.resetForm();
   };
 
-  const validationSchema = Yup.object({
-    email: Yup.string().email("Invalid email format").required("Required"),
-    password: Yup.string()
-      .min(6, "Password must be at least 6 characters")
-      .required("Required"),
-  });
+  //   const validationSchema = Yup.object({
+  //     email: Yup.string().email("Invalid email format").required("Required"),
+  //     password: Yup.string()
+  //       .min(6, "Password must be at least 6 characters")
+  //       .required("Required"),
+  //   });
+
+  if (isLoggedIn) {
+    return <Navigate to="/" />;
+  }
+
   return (
     <div>
       <Formik
         initialValues={initialValues}
-        validationSchema={validationSchema}
+        // validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
         <Form>
           <Field name="email" placeholder="Enter your email" />
+          <ErrorMessage name="email" component="div" className={css.error} />
           <Field
             name="password"
             type="password"
             placeholder="Enter your password"
           />
+          <ErrorMessage name="password" component="div" className={css.error} />
           <button type="submit" className={css.btn}>
             Login
           </button>

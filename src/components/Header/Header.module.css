@@ -1,5 +1,9 @@
-.nav {
+.headerBlock {
+  display: flex;
+  justify-content: space-between;
 }
 
-.link {
+.navLinkBlock {
+  display: flex;
+  gap: 20px;
 }

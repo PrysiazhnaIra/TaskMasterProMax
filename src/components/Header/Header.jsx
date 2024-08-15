@@ -1,19 +1,40 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { selectIsLoggedIn } from "../../redux/auth/selectors";
+import { selectIsLoggedIn, selectUser } from "../../redux/auth/selectors";
 import css from "./Header.module.css";
-import TaskList from "../TaskList/TaskList";
+import { logoutThunk } from "../../redux/auth/operation";
 
 export default function Header() {
+  const user = useSelector(selectUser);
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const dispatch = useDispatch();
   return (
-    <nav className={css.nav}>
-      <NavLink to="/">Home page</NavLink>
-      {isLoggedIn && (
-        <NavLink className={css.link} to="/tasks">
-          <TaskList />
-        </NavLink>
-      )}
-    </nav>
+    <header className={css.headerBlock}>
+      <h2>Auth</h2>
+      <h3>{user.name}</h3>
+      <ul className={css.navLinkBlock}>
+        <li>
+          <NavLink to="/">Home</NavLink>
+        </li>
+        <li>
+          <NavLink to="/tasks">Tasks</NavLink>
+        </li>
+        {!isLoggedIn && (
+          <ul>
+            <li>
+              <NavLink to="/login">Login</NavLink>
+            </li>
+            <li>
+              <NavLink to="/register">Register</NavLink>
+            </li>
+          </ul>
+        )}
+        {isLoggedIn && (
+          <li>
+            <button onClick={() => dispatch(logoutThunk())}>Exit</button>
+          </li>
+        )}
+      </ul>
+    </header>
   );
 }
