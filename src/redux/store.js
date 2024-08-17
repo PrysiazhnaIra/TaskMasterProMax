@@ -2,37 +2,37 @@ import { configureStore } from "@reduxjs/toolkit";
 import { tasksReducer } from "./tasksSlice";
 import { filtersReducer } from "./filtersSlice";
 import { authReducer } from "./auth/slice";
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
-// // Middleware для збереження в Local Storage
-// const saveToLocalStorage = (store) => (next) => (action) => {
-//   const result = next(action);
-//   const state = store.getState();
-//   localStorage.setItem("tasks", JSON.stringify(state.tasks));
-//   return result;
-// };
-
-// // Ініціалізація стану з Local Storage
-// const loadFromLocalStorage = () => {
-//   const savedTasks = localStorage.getItem("tasks");
-//   return savedTasks ? JSON.parse(savedTasks) : undefined;
-// };
-
-// const preloadedState = {
-//   tasks: loadFromLocalStorage(),
-//   filters: {
-//     status: "all",
-//   },
-// };
+const persistConfig = {
+  key: "root",
+  version: 1,
+  storage,
+  whitelist: ["token"],
+};
 
 export const store = configureStore({
   reducer: {
     tasks: tasksReducer,
     filters: filtersReducer,
-    auth: authReducer,
+    auth: persistReducer(persistConfig, authReducer),
   },
-
-  // Для ініціалізації стану з Local Storage
-  // preloadedState,
-  // middleware: (getDefaultMiddleware) =>
-  //   getDefaultMiddleware().concat(saveToLocalStorage),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
+
+export const persistor = persistStore(store);

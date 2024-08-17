@@ -18,6 +18,7 @@ import Register from "./pages/Register/Register";
 import Tasks from "./pages/Tasks/Tasks";
 import NotFound from "./pages/NotFound/NotFound";
 import Header from "./components/Header/Header";
+import { getMeThunk } from "./redux/auth/operation";
 
 function App() {
   const [currentColor, setCurrentColor] = useState(() => {
@@ -33,16 +34,9 @@ function App() {
   };
 
   const dispatch = useDispatch();
-
-  const error = useSelector(selectError);
-
-  // // Отримуємо частини стану
-  // const { items, isLoading, error } = useSelector(getTasks);
-
-  // Викликаємо операцію
-  // useEffect(() => {
-  //   dispatch(fetchTasks());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(getMeThunk());
+  }, [dispatch]);
 
   return (
     <>
