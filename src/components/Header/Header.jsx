@@ -10,8 +10,9 @@ export default function Header() {
   const dispatch = useDispatch();
   return (
     <header className={css.headerBlock}>
-      <h2>AuthTaskMaster</h2>
-      <h3>{user.name}</h3>
+      <h2 className={css.title}>AuthTaskMaster</h2>
+      <p className="text">Task & Travel & Goals & Getaways</p>
+      <h3 className={css.text}>{user.name}</h3>
       <ul className={css.navLinkBlock}>
         <li>
           <NavLink className={css.navLinkItem} to="/">
@@ -26,7 +27,7 @@ export default function Header() {
           </li>
         )}
         {!isLoggedIn && (
-          <ul>
+          <ul className={css.navLinkBlock}>
             <li>
               <NavLink className={css.navLinkItem} to="/login">
                 Login

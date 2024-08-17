@@ -8,6 +8,7 @@ import { selectError, selectIsLoading } from "../../redux/selectors";
 import { useEffect } from "react";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
 import { fetchTasks } from "../../redux/operations";
+import css from "./Tasks.module.css";
 
 export default function Tasks() {
   const dispatch = useDispatch();
@@ -23,9 +24,7 @@ export default function Tasks() {
   }, [dispatch, isLoggedIn]);
 
   return (
-    <div>
-      <h1 className="title">Wish List</h1>
-      <p className="text">Task & Travel & Goals & Getaways</p>
+    <div className={css.tasksBlock}>
       <Form />
       <StatusFilter />
       <TaskCounter />

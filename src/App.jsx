@@ -59,17 +59,6 @@ function App() {
         <Route path="register" element={<Register />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-
-      {/* <h1 className="title">Wish List</h1>
-      <p className="text">Task & Travel & Goals & Getaways</p>
-      <Form />
-      <StatusFilter />
-      <TaskCounter />
-      <Filter />
-      {isLoading && !error && <p>Request in progress...</p>}
-      <TaskList /> */}
-
-      {/* <p className="footer">Vite + React + Redux project - Ira Prysiazhna</p> */}
     </>
   );
 }
