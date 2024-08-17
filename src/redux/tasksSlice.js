@@ -1,6 +1,7 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 import { fetchTasks, addTask, deleteTask, toggleCompleted } from "./operations";
+import { logoutThunk } from "./auth/operation";
 
 const handlePending = (state) => {
   state.isLoading = true;
@@ -35,6 +36,11 @@ const tasksSlice = createSlice({
         state.items.push(action.payload);
       })
       .addCase(addTask.rejected, handleRejected)
+      .addCase(logoutThunk.fulfilled, (state) => {
+        state.items = [];
+        state.error = null;
+        state.isLoading = false;
+      })
       .addCase(deleteTask.pending, handlePending)
       .addCase(deleteTask.fulfilled, (state, action) => {
         state.isLoading = false;

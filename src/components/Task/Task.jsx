@@ -1,6 +1,7 @@
 import css from "./Task.module.css";
 import { useDispatch } from "react-redux";
 import { deleteTask, toggleCompleted } from "../../redux/operations";
+import PropTypes from "prop-types";
 
 export default function Task({ task }) {
   // Отримуємо посилання на функцію відправки екшенів
@@ -32,3 +33,11 @@ export default function Task({ task }) {
     </div>
   );
 }
+
+Task.propTypes = {
+  task: PropTypes.shape({
+    id: PropTypes.string.isRequired, // або PropTypes.number, якщо id - це число
+    text: PropTypes.string.isRequired,
+    completed: PropTypes.bool.isRequired,
+  }).isRequired,
+};

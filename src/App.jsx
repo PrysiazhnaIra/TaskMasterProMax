@@ -40,9 +40,9 @@ function App() {
   // const { items, isLoading, error } = useSelector(getTasks);
 
   // Викликаємо операцію
-  useEffect(() => {
-    dispatch(fetchTasks());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchTasks());
+  // }, [dispatch]);
 
   return (
     <>

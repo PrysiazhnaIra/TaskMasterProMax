@@ -10,28 +10,40 @@ export default function Header() {
   const dispatch = useDispatch();
   return (
     <header className={css.headerBlock}>
-      <h2>Auth</h2>
+      <h2>AuthTaskMaster</h2>
       <h3>{user.name}</h3>
       <ul className={css.navLinkBlock}>
         <li>
-          <NavLink to="/">Home</NavLink>
+          <NavLink className={css.navLinkItem} to="/">
+            Home
+          </NavLink>
         </li>
-        <li>
-          <NavLink to="/tasks">Tasks</NavLink>
-        </li>
+        {isLoggedIn && (
+          <li>
+            <NavLink className={css.navLinkItem} to="/tasks">
+              Tasks
+            </NavLink>
+          </li>
+        )}
         {!isLoggedIn && (
           <ul>
             <li>
-              <NavLink to="/login">Login</NavLink>
+              <NavLink className={css.navLinkItem} to="/login">
+                Login
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/register">Register</NavLink>
+              <NavLink className={css.navLinkItem} to="/register">
+                Register
+              </NavLink>
             </li>
           </ul>
         )}
         {isLoggedIn && (
           <li>
-            <button onClick={() => dispatch(logoutThunk())}>Exit</button>
+            <button className={css.btn} onClick={() => dispatch(logoutThunk())}>
+              Exit
+            </button>
           </li>
         )}
       </ul>

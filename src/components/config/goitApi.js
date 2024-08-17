@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const goitApi = axios.create({
-  baseURL: "https://connections-api.goit.global/",
+  baseURL: "https://task-manager-api.goit.global/",
 });
 
 export const setToken = (token) => {
