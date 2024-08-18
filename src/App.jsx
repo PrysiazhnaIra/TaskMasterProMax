@@ -19,7 +19,8 @@ import Tasks from "./pages/Tasks/Tasks";
 import NotFound from "./pages/NotFound/NotFound";
 import Header from "./components/Header/Header";
 import { getMeThunk } from "./redux/auth/operation";
-import { PrivateRoute } from "./Routes/PrivateRoutes";
+import { PrivateRoute } from "./Routes/PrivateRoute";
+import { PublicRoute } from "./Routes/PublicRoute";
 
 function App() {
   const [currentColor, setCurrentColor] = useState(() => {
@@ -58,8 +59,22 @@ function App() {
             }
           />
         </Route>
-        <Route path="login" element={<Login />} />
-        <Route path="register" element={<Register />} />
+        <Route
+          path="login"
+          element={
+            <PublicRoute>
+              <Login />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="register"
+          element={
+            <PublicRoute>
+              <Register />
+            </PublicRoute>
+          }
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>
