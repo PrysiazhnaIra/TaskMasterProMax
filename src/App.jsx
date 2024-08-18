@@ -19,6 +19,7 @@ import Tasks from "./pages/Tasks/Tasks";
 import NotFound from "./pages/NotFound/NotFound";
 import Header from "./components/Header/Header";
 import { getMeThunk } from "./redux/auth/operation";
+import { PrivateRoute } from "./Routes/PrivateRoutes";
 
 function App() {
   const [currentColor, setCurrentColor] = useState(() => {
@@ -47,7 +48,15 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="tasks" element={<Tasks />} />
+
+          <Route
+            path="tasks"
+            element={
+              <PrivateRoute>
+                <Tasks />
+              </PrivateRoute>
+            }
+          />
         </Route>
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
