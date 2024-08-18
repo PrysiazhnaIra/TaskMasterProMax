@@ -21,6 +21,7 @@ import Header from "./components/Header/Header";
 import { getMeThunk } from "./redux/auth/operation";
 import { PrivateRoute } from "./Routes/PrivateRoute";
 import { PublicRoute } from "./Routes/PublicRoute";
+import { selectIsRefreshing } from "./redux/auth/selectors";
 
 function App() {
   const [currentColor, setCurrentColor] = useState(() => {
@@ -36,11 +37,13 @@ function App() {
   };
 
   const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshing);
+
   useEffect(() => {
     dispatch(getMeThunk());
   }, [dispatch]);
 
-  return (
+  return isRefreshing ? null : (
     <>
       <Background
         currentColor={currentColor}

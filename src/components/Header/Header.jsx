@@ -11,7 +11,6 @@ export default function Header() {
   return (
     <header className={css.headerBlock}>
       <h2 className={css.title}>AuthTaskMaster</h2>
-      <p className="text">Task & Travel & Goals & Getaways</p>
       <h3 className={css.text}>{user.name}</h3>
       <ul className={css.navLinkBlock}>
         <li>
@@ -19,13 +18,13 @@ export default function Header() {
             Home
           </NavLink>
         </li>
-        {isLoggedIn && (
-          <li>
-            <NavLink className={css.navLinkItem} to="/tasks">
-              Tasks
-            </NavLink>
-          </li>
-        )}
+
+        <li>
+          <NavLink className={css.navLinkItem} to="/tasks">
+            Tasks
+          </NavLink>
+        </li>
+
         {!isLoggedIn && (
           <ul className={css.navLinkBlock}>
             <li>
