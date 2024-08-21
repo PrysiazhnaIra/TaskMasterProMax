@@ -10,7 +10,7 @@ export default function Header() {
   const dispatch = useDispatch();
   return (
     <header className={css.headerBlock}>
-      <h2 className={css.title}>AuthTaskMaster</h2>
+      <h2 className={css.title}>Task Master</h2>
       <h3 className={css.text}>{user.name}</h3>
       <ul className={css.navLinkBlock}>
         <li>

@@ -22,10 +22,6 @@ export const loginThunk = createAsyncThunk(
       setToken(data.token);
       return data;
     } catch (error) {
-      //   if (error.response && error.response.data) {
-      //     // Отримання повідомлення про помилку з відповіді сервера
-      //     return thunkAPI.rejectWithValue(error.response.data.message);
-      //   }
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -42,7 +38,7 @@ export const logoutThunk = createAsyncThunk("logout", async (_, thunkAPI) => {
 
 //операція робить запит за нашими даними(name, email)
 export const getMeThunk = createAsyncThunk("getMe", async (_, thunkAPI) => {
-  // перевірка токена, чиє він в locale storage
+  // перевірка токена, чи є він в locale storage
   const savedToken = thunkAPI.getState().auth.token;
   // якщо токена немає - зупинити операцію
   if (savedToken === null) {
